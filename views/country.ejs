@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= country.name %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="country"> 
+        <h1><%= country.name%></h1>
+        <img class="flag" src="<%=country.flag%>" alt="<%= country.name %> flag">
+        <ul>
+            <li>Capital: <%= country.capital %></li>
+            <li>Region: <%= country.region %></li>
+            <li>Sub-region: <%= country.subregion %></li>
+            <li>Population: <%= country.population %></li>
+            <li>Demonym: <%= country.demonym %></li>
+            <li>Bordering Countries:
+                <ul>
+                    <% country.borders.forEach(function(borderCountry) { %> 
+                        <li>
+                            <a href="/country/<%=borderCountry%>"><%=borderCountry%></a>
+                        </li>
+                    <%}); %>
+                </ul>
+            </li>
+            <li>Currency:
+                <ul>
+                    <% country.currencies.forEach(function(currency) { %> 
+                        <li>
+                            <%= currency.symbol + " - " + currency.name%>
+                        </li>
+                    <%}); %>
+                </ul>          
+            </li>
+            <li>Languages:
+                <ul>
+                    <% country.languages.forEach(function(language) { %> 
+                        <li>
+                            <%= language.name %>
+                        </li>
+                    <%}); %>
+                </ul>  
+            </li>
+            <li>Regional Blocs:
+                <ul>
+                    <% country.regionalBlocs.forEach(function(bloc) { %> 
+                        <li>
+                            <%= bloc.acronym + " - " + bloc.name %>
+                        </li>
+                    <%}); %>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
