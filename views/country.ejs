@@ -5,55 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= country.name %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
+    <%- include partials/resources.ejs %>
 </head>
 <body>
-    <div class="country"> 
+    <%- include partials/nav.ejs %>
+    <div class="container">
         <h1><%= country.name%></h1>
         <img class="flag" src="<%=country.flag%>" alt="<%= country.name %> flag">
-        <ul>
-            <li>Capital: <%= country.capital %></li>
-            <li>Region: <%= country.region %></li>
-            <li>Sub-region: <%= country.subregion %></li>
-            <li>Population: <%= country.population %></li>
-            <li>Demonym: <%= country.demonym %></li>
-            <li>Bordering Countries:
-                <ul>
-                    <% country.borders.forEach(function(borderCountry) { %> 
-                        <li>
-                            <a href="/country/<%=borderCountry%>"><%=borderCountry%></a>
-                        </li>
-                    <%}); %>
-                </ul>
-            </li>
-            <li>Currency:
-                <ul>
-                    <% country.currencies.forEach(function(currency) { %> 
-                        <li>
-                            <%= currency.symbol + " - " + currency.name%>
-                        </li>
-                    <%}); %>
-                </ul>          
-            </li>
-            <li>Languages:
-                <ul>
-                    <% country.languages.forEach(function(language) { %> 
-                        <li>
-                            <%= language.name %>
-                        </li>
-                    <%}); %>
-                </ul>  
-            </li>
-            <li>Regional Blocs:
-                <ul>
-                    <% country.regionalBlocs.forEach(function(bloc) { %> 
-                        <li>
-                            <%= bloc.acronym + " - " + bloc.name %>
-                        </li>
-                    <%}); %>
-                </ul>
-            </li>
-        </ul>
+        <div class="row">
+            <div class="col s6">
+                <h5>Capital</h5>
+                <p> <%= country.capital %></p>
+                <h5>Region</h5>
+                <p> <%= country.subregion %></p>
+                <h5>Population</h5>
+                <p> <%= country.population %></p>
+                <h5>Demonym</h5>
+                <p> <%= country.demonym %></p>
+            </div>
+            <div class="col s6">
+                <h5>Bordering Countries</h5>
+                <% country.borders.forEach(function(borderCountry,idx,array) { %> 
+                    <a href="/country/<%=borderCountry%>"><%=borderCountry%></a>
+                    <%= (idx != array.length - 1) ? "," : ""%> 
+                <%}); %>
+
+                <h5>Currency</h5>
+                <% country.currencies.forEach(function(currency,idx,array) { %>
+                    <%= currency.symbol + " - " + currency.name%>
+                    <%= (idx != array.length - 1) ? "," : ""%> 
+                <%}); %>
+
+                <h5>Languages</h5>
+                <% country.languages.forEach(function(language,idx,array) { %> 
+                    <%= language.name %>
+                    <%= (idx != array.length - 1) ? "," : ""%> 
+                <%}); %>
+
+                <h5>Regional Blocs</h5>
+                <% country.regionalBlocs.forEach(function(bloc,idx,array) { %> 
+                    <%= bloc.acronym + " - " + bloc.name %>
+                    <%= (idx != array.length - 1) ? "," : ""%> 
+                <%}); %>
+            </div>
+        </div>
     </div>
 </body>
 </html>

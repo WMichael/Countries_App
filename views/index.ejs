@@ -5,19 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Countries</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
+    <%- include partials/resources.ejs %>
 </head>
 <body>
-    <h1>Countries</h1>
-    <h2>Countries list:</h2>
-    <ul>
-        <% countries.forEach(function(country) { %> 
-            <li>
-                <a href="/country/<%= country.alpha3Code%>">
-                    <%= country.name %>
-                </a>
-            </li>
-        <%}); %>
-    </ul>
+    <%- include partials/nav.ejs %>
+    <div class="container">
+        <h2>Countries list:</h2>
+        <div class="collection">
+            <% countries.forEach(function(country) { %> 
+                    <a class="collection-item" href="/country/<%= country.alpha3Code%>">
+                        <%= country.name %>
+                    </a>
+            <%}); %>
+        </div>
+    </div>
 </body>
 </html>
