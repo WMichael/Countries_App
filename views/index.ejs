@@ -10,7 +10,7 @@
 <body>
     <%- include partials/nav.ejs %>
     <div class="container">
-        <h2>Countries list:</h2>
+        <h2>Countries:</h2>
         <div class="collection">
             <% countries.forEach(function(country) { %> 
                     <a class="collection-item" href="/country/<%= country.alpha3Code%>">
@@ -19,5 +19,7 @@
             <%}); %>
         </div>
     </div>
+
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
 </body>
 </html>

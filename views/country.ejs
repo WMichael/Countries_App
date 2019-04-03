@@ -49,6 +49,14 @@
                 <%}); %>
             </div>
         </div>
+        <div class="row">
+            <div id="mapid"></div>
+        </div>
+        <!-- Import JS file after div is created -->
+        <script src="/js/mapInit.js"></script>
+        <script>
+            mapInit(<%=country.latlng[0] + "," + country.latlng[1]%>);
+        </script>
     </div>
 </body>
 </html>
